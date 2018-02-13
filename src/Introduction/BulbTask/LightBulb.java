@@ -30,7 +30,8 @@ public class LightBulb {
     public static Boolean state = false; // on or off
     public static Boolean inOut = false;
     String manufacturer;
-    int maxOnNumber = 5;
+    public static int maxOnNumber = 5;
+    public static int numberOfOn = 0;
 
     public void setState(boolean state) {
         this.state = state;
@@ -40,12 +41,20 @@ public class LightBulb {
         this.inOut = inOut;
     }
 
+    public void setNumberOfOn(int numberOfOn) {
+        this.numberOfOn = numberOfOn;
+    }
+
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
 
     public void setMaxOnNumber(int maxOnNumber) {
         this.maxOnNumber = maxOnNumber;
+    }
+
+    public int getNumberOfOn() {
+        return numberOfOn;
     }
 
     public Boolean getState() {

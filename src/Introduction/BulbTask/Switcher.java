@@ -40,6 +40,9 @@ public class Switcher {
         if ((bulb.inOut) && (switcherState)) {
             bulb.setState(true);
             System.out.println("Bulb is on");
+            LightBulb.numberOfOn = (LightBulb.numberOfOn + 1);
+            bulb.setNumberOfOn(LightBulb.numberOfOn);
+            System.out.println("Bulb number Of On = " + LightBulb.numberOfOn);
             return LightBulb.state;
         } else {
             bulb.setState(false);
