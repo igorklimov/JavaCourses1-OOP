@@ -1,3 +1,5 @@
+package Introduction.BulbTask;
+
 //        Создайте классы для описания лампочки и переключателя(LightBulb/Switcher).
 //        У лампочки должны быть такие свойства как: включена/выключена, фирма произовидеть,
 //        количество возможных включений(по умолчанию лампочку можно включить не более 5 раз).
@@ -5,55 +7,52 @@
 //
 //        Должна быть возможность подключить лампочку к переключателю, включать/выключать лампочку при помощи переключателя.
 //
-//        Создайте класс LightMain, в нем создайте main метод. Продемонстрируйте в данном методе работу переключателя и лампочки с ее перегоранием.
+//        Создайте класс LightMain, в нем создайте main метод. Продемонстрируйте в данном методе работу
+//        переключателя и лампочки с ее перегоранием.
 
-package Introduction.BulbTask;
+
+//        Должна быть лампочка.
+//        Должен быть выключатель.
+//        Лампочка имеет состояние (включена или выключена)
+//        Лампочку можно включать или выключать при помощи выключателя.
+//        Один выключатель можно использовать с разными лампочками, но продаются они отдельно
+//        (не надо создавать лампочку внутри класса свитчер).
+//        мысли с точки зрения объектов, а не того, что будет в консоли написано
+//        у тебя есть объект свитчер
+//        есть объект лампочка
+//        если они не взаимодействуют, то не важно, что ты написал "лампочка включена"
+//
+//        надо чтобы у объекта лампочка состояние поменялось.
 
 public class LightBulb {
-    public static String bulbStatus = "off";
-    private static int maxSwitches = 5;
-    public int numberOfSwitches = 0;
-    public static int on = 0;
 
-    public LightBulb() {
-        this.bulbStatus = bulbStatus;
-        this.numberOfSwitches = numberOfSwitches;
+    // initial characteristics
+    Boolean state; // on or off
+    String manufacturer;
+    int maxOnNumber = 5;
+
+    public void setState(boolean state) {
+        this.state = state;
     }
 
-    public String getBulbStatus() {
-        return bulbStatus;
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
-    public int getNumberOfSwitches() {
-        return numberOfSwitches;
+    public void setMaxOnNumber(int maxOnNumber) {
+        this.maxOnNumber = maxOnNumber;
     }
 
-    // check if user wants to insert the bulb
-    public static void insertBulb(String insert) {
-        if (!insert.equals("yes")) {
-            System.out.println("Live without light, dude");
-        } else {
-        }
+    public Boolean getState() {
+        return state;
     }
 
-    // check the number of "on" statuses
-    public static int numberOfOn(String bulbStatus) {
-        if (bulbStatus.equals("on")) {
-            on = on + 1;
-            System.out.println(on);
-        }
-        return on;
+    public String getManufacturer() {
+        return manufacturer;
     }
 
-    // check if number of "on" is not higher than maxSwitches;
-    public static void checkForCriticalMax(int on) {
-        while (on != maxSwitches) {
-            Switcher switcher = new Switcher();
-            bulbStatus = switcher.getProcessedBulbStatus();
-            System.out.println(bulbStatus);
-            numberOfOn(bulbStatus);
-        }
-        System.out.println("Over");
+    public int getMaxOnNumber() {
+        return maxOnNumber;
     }
 
 }

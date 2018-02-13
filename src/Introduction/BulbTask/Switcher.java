@@ -1,31 +1,52 @@
 package Introduction.BulbTask;
 
-import java.util.Scanner;
-
 public class Switcher {
 
-    LightBulb bulb = new LightBulb();
-    String processedBulbStatus = bulb.getBulbStatus();
+    boolean switcherState = false;
+    boolean bulbInserted = false;
+    boolean electricitySupply = false;
 
-    public static String onOff(String processedBulbStatus) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Do you want to switch the light the light? If Yes, type 'Yes', if No type 'No' ");
-        String insert = scanner.nextLine().toLowerCase();
-        if (insert.equals("yes")) {
-            System.out.println("The light is on");
-            return processedBulbStatus = "on";
+    public void setSwitcherState(boolean switcherState) {
+        this.switcherState = switcherState;
+    }
+
+    public void setBulbInserted(boolean bulbInserted) {
+        this.bulbInserted = bulbInserted;
+    }
+
+    public void setElectricitySupply(boolean electricitySupply) {
+        this.electricitySupply = electricitySupply;
+    }
+
+    public boolean getSwitcherState() {
+        return switcherState;
+    }
+
+    public boolean getBulbInserted() {
+        return bulbInserted;
+    }
+
+    public boolean getElectricitySupply() {
+        return electricitySupply;
+    }
+
+    public static boolean onOff(boolean switcherState, boolean bulbInserted, boolean electricitySupply) {
+        if ((bulbInserted == true) && (switcherState == true)) {
+            electricitySupply = true;
+            return electricitySupply;
         } else {
-            System.out.println("The light is off");
-            return processedBulbStatus = "off";
+            electricitySupply = false;
+            return electricitySupply;
         }
     }
 
-    public Switcher() {
-        this.processedBulbStatus = processedBulbStatus;
+    public static boolean lightOnOff(boolean electricity, boolean switcherState, boolean state) {
+        if ((electricity == true) && (switcherState == true)) {
+            state = true;
+            return state;
+        }
+        else {
+            return false;
+        }
     }
-
-    public String getProcessedBulbStatus() {
-        return processedBulbStatus;
-    }
-
 }
