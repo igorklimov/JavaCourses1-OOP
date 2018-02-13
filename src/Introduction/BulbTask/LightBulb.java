@@ -27,12 +27,17 @@ package Introduction.BulbTask;
 public class LightBulb {
 
     // initial characteristics
-    Boolean state; // on or off
+    public static Boolean state = false; // on or off
+    public static Boolean inOut = false;
     String manufacturer;
     int maxOnNumber = 5;
 
     public void setState(boolean state) {
         this.state = state;
+    }
+
+    public void setInOut(boolean inOut) {
+        this.inOut = inOut;
     }
 
     public void setManufacturer(String manufacturer) {
@@ -53,6 +58,10 @@ public class LightBulb {
 
     public int getMaxOnNumber() {
         return maxOnNumber;
+    }
+
+    public boolean getInOut() {
+        return inOut;
     }
 
 }

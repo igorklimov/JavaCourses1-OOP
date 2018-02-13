@@ -2,51 +2,50 @@ package Introduction.BulbTask;
 
 public class Switcher {
 
-    boolean switcherState = false;
-    boolean bulbInserted = false;
-    boolean electricitySupply = false;
+    private static boolean switcherState = false;
 
     public void setSwitcherState(boolean switcherState) {
         this.switcherState = switcherState;
-    }
-
-    public void setBulbInserted(boolean bulbInserted) {
-        this.bulbInserted = bulbInserted;
-    }
-
-    public void setElectricitySupply(boolean electricitySupply) {
-        this.electricitySupply = electricitySupply;
     }
 
     public boolean getSwitcherState() {
         return switcherState;
     }
 
-    public boolean getBulbInserted() {
-        return bulbInserted;
-    }
-
-    public boolean getElectricitySupply() {
-        return electricitySupply;
-    }
-
-    public static boolean onOff(boolean switcherState, boolean bulbInserted, boolean electricitySupply) {
-        if ((bulbInserted == true) && (switcherState == true)) {
-            electricitySupply = true;
-            return electricitySupply;
+    public static boolean insertBulb(LightBulb bulb) {
+        if (!bulb.inOut) {
+            bulb.setInOut(true);
+            System.out.println("Bulb inserted");
+            return bulb.inOut;
         } else {
-            electricitySupply = false;
-            return electricitySupply;
+            bulb.setInOut(false);
+            System.out.println("Bulb is not inserted");
+            return bulb.inOut;
         }
     }
 
-    public static boolean lightOnOff(boolean electricity, boolean switcherState, boolean state) {
-        if ((electricity == true) && (switcherState == true)) {
-            state = true;
-            return state;
-        }
-        else {
-            return false;
+    public static boolean moveSwitch(Switcher switcher) {
+        if (!switcherState) {
+            switcher.setSwitcherState(true);
+            System.out.println("Switch is on");
+            return switcherState;
+        } else {
+            switcher.setSwitcherState(false);
+            System.out.println("Switch is off");
+            return switcherState;
         }
     }
+
+    public static boolean onOff(LightBulb bulb) {
+        if ((bulb.inOut) && (switcherState)) {
+            bulb.setState(true);
+            System.out.println("Bulb is on");
+            return LightBulb.state;
+        } else {
+            bulb.setState(false);
+            System.out.println("Bulb is off");
+            return LightBulb.state;
+        }
+    }
+
 }
