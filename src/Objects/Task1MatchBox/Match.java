@@ -11,10 +11,11 @@ public class Match {
         return lightStatus;
     }
 
-    public boolean igniteMatch(Sandpaper sandpaper) {
+    public boolean igniteMatch(Sandpaper sandpaper, Match match) {
         if (sandpaper.sandpaperWear > 0) {
             setLightStatus(true);
-            sandpaper.sandpaperWearCounter(sandpaper.sandpaperWear, lightStatus);
+            sandpaper.sandpaperWearCounter(match.lightStatus);
+            System.out.println("Match is ignited - " + lightStatus);
             return lightStatus;
         }
         else

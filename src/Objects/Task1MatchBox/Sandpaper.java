@@ -11,11 +11,12 @@ public class Sandpaper {
         return sandpaperWear;
     }
 
-    public int sandpaperWearCounter(int sandpaperWear, Match match) {
-        if (!match.getLightStatus()) {
+    public int sandpaperWearCounter(boolean lightStatus) {
+        if (!lightStatus) {
             return sandpaperWear;
         } else {
             setSandpaperWear(sandpaperWear - 1);
+            System.out.println("Sandpaper wear is " + sandpaperWear);
             return sandpaperWear;
         }
     }

@@ -57,7 +57,7 @@ public class MatchBox {
     public boolean isOpenClosed(boolean openClosed) {
         if (openClosed) {
             setOpenClosed(true);
-            System.out.println(openClosed);
+            System.out.println("MatchBox is opened -> " + openClosed);
             return openClosed;
         }
         else {
@@ -67,9 +67,8 @@ public class MatchBox {
     }
 
     public int takeMatch(int numberOfMatches) {
-        if ((getNumberOfMatches() > 0) && openClosed) {
+        if ((numberOfMatches > 0) && openClosed) {
             leftMatches(numberOfMatches);
-            System.out.println(numberOfMatches);
             return numberOfMatches;
         }
         else {
@@ -83,6 +82,7 @@ public class MatchBox {
 
     public int leftMatches(int numberOfMatches) {
         setNumberOfMatches(numberOfMatches-1);
+        System.out.println("Number of matches left is " + (numberOfMatches-1));
         return numberOfMatches;
     }
 
