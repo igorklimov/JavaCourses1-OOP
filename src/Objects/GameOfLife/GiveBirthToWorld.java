@@ -5,6 +5,6 @@ public class GiveBirthToWorld {
 
         Life life = new Life(10);
 
-        life.drawWorld();
+        life.generateWorld();
     }
 }

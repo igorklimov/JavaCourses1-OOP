@@ -48,7 +48,7 @@ public class Life {
         }
     }
 
-    public void drawWorld() {
+    public void generateWorld() {
         System.out.println("Generation " + generation);
         for (int row = 0; row < field.length; row++) {
             for (int col = 0; col < field[row].length; col++) {
