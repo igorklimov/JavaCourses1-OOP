@@ -30,6 +30,7 @@ package EncapsulationETC.Polymorphism;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Arrays;
 
 public class SquareCalculator {
 
@@ -37,25 +38,20 @@ public class SquareCalculator {
     public static void main(String[] args) {
         Random random = new Random();
         List<AbstractShape> list = new ArrayList<>();
-        Circle circle = new Circle();
-        Triangle triangle = new Triangle((random.nextInt(10) + 1), (random.nextInt(10) + 1), (random.nextInt(10) + 1));
-        Rectangle rectangle = new Rectangle((random.nextInt(10) + 1), (random.nextInt(10) + 1));
-        circle.setRadius((random.nextInt(10) + 1));
-        circle.calculateSquare();
-        triangle.calculateSquare();
-        rectangle.calculateSquare();
-        list.add(circle);
-        list.add(triangle);
-        list.add(rectangle);
-
-
-        System.out.println(String.valueOf(circle.calculateSquare()));
-        System.out.println(String.valueOf(triangle.calculateSquare()));
-        System.out.println(String.valueOf(rectangle.calculateSquare()));
-
-        for (int i=0; i <3; i++) {
-
+        for (int i = 0; i < 3; i++) {
+            list.add(new Circle(random.nextInt(10) + 1));
+            list.add(new Triangle(random.nextInt(10) + 1, random.nextInt(10) + 1, random.nextInt(10) + 1));
+            list.add(new Rectangle(random.nextInt(10) + 1, random.nextInt(10) + 1));
         }
+
+        int m = 0;
+        for (int i = 0; i < list.size(); i++) {
+            m = m + list.get(i).calculateSquare();
+            if ((i + 1) % 3 == 0) {
+//                System.out.println(" ");
+            }
+        }
+        System.out.println("Sum of all squares = " + m);
     }
 
 }

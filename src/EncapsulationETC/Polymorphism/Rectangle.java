@@ -1,8 +1,9 @@
 package EncapsulationETC.Polymorphism;
 
 public class Rectangle extends AbstractShape{
-    int sideA;
-    int sideB;
+    private int sideA;
+    private int sideB;
+
 
     public Rectangle(int sideA, int sideB) {
         this.sideA = sideA;

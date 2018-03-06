@@ -1,10 +1,10 @@
 package EncapsulationETC.Polymorphism;
 
 public class Triangle extends AbstractShape {
-    int sideA;
-    int sideB;
-    int sideC;
-    int s;
+    private int sideA;
+    private int sideB;
+    private int sideC;
+    private int s;
 
     public void setSideA(int sideA) {
         this.sideA = sideA;
