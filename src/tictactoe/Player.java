@@ -1,4 +1,4 @@
-package EncapsulationETC.TicTacToe;
+package tictactoe;
 
 
 public abstract class Player {
@@ -13,6 +13,10 @@ public abstract class Player {
         return turn;
     }
 
-    public abstract int[] makeStep(int[] deck, int i);
+
+
+    public abstract int[][] makeStep(Board board);
+
+    public abstract boolean switchPlayer();
 
 }
