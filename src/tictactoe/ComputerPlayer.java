@@ -4,47 +4,27 @@ import java.util.Random;
 
 public class ComputerPlayer extends Player {
     private Random rand = new Random();
+    private int randomNumber;
 
-    @Override
-    public void setTurn(String turn) {
-        super.setTurn(turn);
+    public int getRandomNumber(Board board) {
+        randomNumber = rand.nextInt(board.getSize());
+        return randomNumber;
     }
 
     @Override
-    public String getTurn() {
-        return super.getTurn();
+    public void makeStep(Board board) {
+        boolean loop = false;
+        int[][] testBoard = board.getBoard();
+        while (!loop) {
+            int rand1 = getRandomNumber(board);
+            int rand2 = getRandomNumber(board);
+            if (testBoard[rand1][rand2] == 0) {
+                testBoard[rand1][rand2] = 2;
+                loop = true;
+            } else {
+                loop = false;
+            }
+        }
+        board.setBoard(testBoard);
     }
-
-    @Override
-    public boolean switchPlayer() {
-        return false;
-    }
-
-    @Override
-    public int[][] makeStep(Board board) {
-        return null;
-
-    }
-
-    //
-//    @Override
-//    public int[] makeStep(int deck[], int i) {
-//        int newRandom = 0;
-//
-//        newRandom = rand.nextInt(i - 1) + 1;
-//        if (deck[newRandom] == 0) {
-//            while (deck[newRandom] != 2) {
-//                newRandom = rand.nextInt(i - 1) + 1;
-//                if (deck[newRandom] == 0) {
-//                    deck[newRandom] = 2;
-//                    setTurn("Computer");
-//                }
-//                System.out.println(newRandom + 1);
-//            }
-//        } else {
-//            newRandom = rand.nextInt(i - 1) + 1;
-//        }
-//        System.out.println(deck[newRandom]);
-//        return deck;
-//    }
 }
