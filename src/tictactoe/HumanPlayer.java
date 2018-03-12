@@ -7,9 +7,17 @@ public class HumanPlayer extends Player {
     private int humanInputHorizontal;
     private int humanInputVertical;
 
+    public void setHumanInputVertical(int humanInputVertical) {
+        this.humanInputVertical = humanInputVertical;
+    }
+
+    public void setHumanInputHorizontal(int humanInputHorizontal) {
+        this.humanInputHorizontal = humanInputHorizontal;
+    }
+
     public int getHumanInputHorizontal(Board board) {
         humanInputHorizontal = -1;
-        while (humanInputHorizontal <= board.getSize() && humanInputHorizontal <= -1) {
+        while ((humanInputHorizontal <= board.getSize()) && (humanInputHorizontal <= -1) ) {
             System.out.println("Please type a number from 1 to " + board.getSize() + " (it will represent horisontal axis)");
             try {
                 humanInputHorizontal = Integer.parseInt(scan.nextLine()) - 1;

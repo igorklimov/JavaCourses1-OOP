@@ -2,7 +2,7 @@ package tictactoe;
 
 public class TicTacToeMain {
     public static void main(String[] args) {
-        int size = 3;
+        int size = 5;
         int[][] game = new int[size][size];
 
         Board board = new Board(game, size);
@@ -11,14 +11,14 @@ public class TicTacToeMain {
         Player comp = new ComputerPlayer();
         Player human = new HumanPlayer();
 
-        boolean win = false;
+        board.setWin(false);
 
-        while (!win) {
+        while (!board.isWin()) {
             human.makeStep(board);
             board.printBoard();
             comp.makeStep(board);
             board.printBoard();
-            win = board.checkWin();
+            board.checkWin();
         }
     }
 }
