@@ -18,7 +18,7 @@ public class TicTacToeMain {
             board.printBoard();
             comp.makeStep(board);
             board.printBoard();
-            board.checkWin();
+            win = board.checkWin();
         }
     }
 }
