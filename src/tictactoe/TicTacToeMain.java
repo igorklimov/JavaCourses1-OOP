@@ -18,8 +18,7 @@ public class TicTacToeMain {
             board.printBoard();
             comp.makeStep(board);
             board.printBoard();
-            if (board.checkWin()) win = true;
-            else win = false;
+            board.checkWin();
         }
     }
 }
