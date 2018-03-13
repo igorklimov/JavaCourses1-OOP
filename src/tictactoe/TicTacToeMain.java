@@ -1,24 +1,30 @@
 package tictactoe;
 
+import java.util.List;
+
 public class TicTacToeMain {
     public static void main(String[] args) {
-        int size = 5;
+        int size = 3;
         int[][] game = new int[size][size];
 
+        GameFeatures gameFeatures = new GameFeatures();
         Board board = new Board(game, size);
         board.getBoard();
 
         Player comp = new ComputerPlayer();
         Player human = new HumanPlayer();
 
-        board.setWin(false);
+        List<Player> players;
+        players = gameFeatures.addPlayer(comp, comp);
 
-        while (!board.isWin()) {
-            human.makeStep(board);
-            board.printBoard();
-            comp.makeStep(board);
-            board.printBoard();
-            board.checkWin();
+        gameFeatures.setWin(false);
+
+        while (!gameFeatures.isWin()) {
+            for (int i = 0; i < 2; i++) {
+                players.get(i).makeStep(board);
+                gameFeatures.checkWin(board);
+                board.printBoard();
+            }
         }
     }
 }
