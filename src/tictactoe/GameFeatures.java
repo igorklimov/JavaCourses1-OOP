@@ -22,17 +22,24 @@ public class GameFeatures {
     }
 
     public boolean checkWin(Board board) {
-        boolean a = false;
-        boolean b = false;
-        boolean c = false;
-        boolean d = false;
-        while (!a && !b && !c && !d) {
-            a = getWinnerVertical(board);
-            b = getWinnerHorizontal(board);
-            c = getWinnerDiagonalRightToLeft(board);
-            d = getWinnerDiagonalLeftToRight(board);
+        boolean a;
+        boolean b;
+        boolean c;
+        boolean d;
+
+        a = getWinnerVertical(board);
+        b = getWinnerHorizontal(board);
+        c = getWinnerDiagonalRightToLeft(board);
+        d = getWinnerDiagonalLeftToRight(board);
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+        System.out.println(d);
+        if (a || b || c || d) {
+            setWin(true);
+            System.out.println("Winner");
         }
-        return true;
+        return isWin();
     }
 
     private boolean getWinnerVertical(Board board) {
@@ -42,16 +49,13 @@ public class GameFeatures {
         for (i = 0; i < (board.getSize() - 2); i++) {
             for (j = 0; j < (board.getSize()); j++) {
                 if ((actualBoard[i][j] == actualBoard[i + 1][j]) && (actualBoard[i][j] == actualBoard[i + 2][j]) && (actualBoard[i][j] != 0)) {
-                    setWin(true);
-                    System.out.println("Winner");
-                    break;
+                    win = true;
                 } else {
-                    setWin(false);
+                    win = false;
                 }
             }
         }
-        System.out.println(isWin());
-        return isWin();
+        return win;
     }
 
     private boolean getWinnerHorizontal(Board board) {
@@ -61,16 +65,13 @@ public class GameFeatures {
         for (i = 0; i < (board.getSize()); i++) {
             for (j = 0; j < (board.getSize() - 2); j++) {
                 if ((actualBoard[i][j] == actualBoard[i][j + 1]) && (actualBoard[i][j] == actualBoard[i][j + 2]) && (actualBoard[i][j] != 0)) {
-                    setWin(true);
-                    System.out.println("Winner");
-                    break;
+                    win = true;
                 } else {
-                    setWin(false);
+                    win = false;
                 }
             }
         }
-        System.out.println(isWin());
-        return isWin();
+        return win;
     }
 
     private boolean getWinnerDiagonalLeftToRight(Board board) {
@@ -80,16 +81,13 @@ public class GameFeatures {
         for (i = 0; i < (board.getSize() - 2); i++) {
             for (j = 0; j < (board.getSize() - 2); j++) {
                 if ((actualBoard[i][j] == actualBoard[i + 1][j + 1]) && (actualBoard[i][j] == actualBoard[i + 2][j + 2]) && (actualBoard[i][j] != 0)) {
-                    setWin(true);
-                    System.out.println("Winner");
-                    break;
+                    win = true;
                 } else {
-                    setWin(false);
+                    win = false;
                 }
             }
         }
-        System.out.println(isWin());
-        return isWin();
+        return win;
     }
 
     private boolean getWinnerDiagonalRightToLeft(Board board) {
@@ -99,15 +97,12 @@ public class GameFeatures {
         for (i = 2; i < board.getSize(); i++) {
             for (j = 0; j < board.getSize() - 2; j++) {
                 if ((actualBoard[i][j] == actualBoard[i - 1][j + 1]) && (actualBoard[i][j] == actualBoard[i - 2][j + 2]) && (actualBoard[i][j] != 0)) {
-                    setWin(true);
-                    System.out.println("Winner");
-                    break;
+                    win = true;
                 } else {
-                    setWin(false);
+                    win = false;
                 }
             }
         }
-        System.out.println(isWin());
-        return isWin();
+        return win;
     }
 }

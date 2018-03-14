@@ -15,7 +15,7 @@ public class TicTacToeMain {
         Player human = new HumanPlayer();
 
         List<Player> players;
-        players = gameFeatures.addPlayer(comp, comp);
+        players = gameFeatures.addPlayer(human, comp);
 
         gameFeatures.setWin(false);
 
