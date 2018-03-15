@@ -15,9 +15,9 @@ public class HumanPlayer extends Player {
         this.humanInputHorizontal = humanInputHorizontal;
     }
 
-    public int getHumanInputHorizontal(Board board) {
+    private int getHumanInputHorizontal(Board board) {
         humanInputHorizontal = -1;
-        while ((humanInputHorizontal <= board.getSize()) && (humanInputHorizontal <= -1) ) {
+        while ((humanInputHorizontal <= board.getSize()) && (humanInputHorizontal <= -1)) {
             System.out.println("Please type a number from 1 to " + board.getSize() + " (it will represent horisontal axis)");
             try {
                 humanInputHorizontal = Integer.parseInt(scan.nextLine()) - 1;
@@ -29,7 +29,7 @@ public class HumanPlayer extends Player {
         return humanInputHorizontal;
     }
 
-    public int getHumanInputVertical(Board board) {
+    private int getHumanInputVertical(Board board) {
         humanInputVertical = -1;
         while (humanInputVertical <= board.getSize() && humanInputVertical <= -1) {
             System.out.println("Please type a number from 1 to " + board.getSize() + " (it will represent vertical axis)");

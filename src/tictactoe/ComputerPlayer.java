@@ -6,7 +6,7 @@ public class ComputerPlayer extends Player {
     private Random rand = new Random();
     private int randomNumber;
 
-    public int getRandomNumber(Board board) {
+    private int getRandomNumber(Board board) {
         randomNumber = rand.nextInt(board.getSize());
         return randomNumber;
     }

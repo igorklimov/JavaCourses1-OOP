@@ -10,7 +10,7 @@ public class Board {
         setSize(size);
     }
 
-    public void setSize(int size) {
+    private void setSize(int size) {
         this.size = size;
     }
 
