@@ -5,6 +5,6 @@ public class TicTacToeMain {
         GameFeatures gameFeatures = new GameFeatures();
         Player comp = new ComputerPlayer();
         Player human = new HumanPlayer();
-        gameFeatures.startGame(3, comp, human);
+        gameFeatures.startGame(3, human, comp);
     }
 }

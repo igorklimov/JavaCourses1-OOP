@@ -41,12 +41,6 @@ public class GameFeatures {
         boolean c = getWinnerDiagonalRightToLeft(board);
         boolean d = getWinnerDiagonalLeftToRight(board);
         boolean e = noWinner(board);
-
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(c);
-        System.out.println(d);
-        System.out.println(e);
         if (a || b || c || d) {
             setWin(true);
             if (getSteps() % 2 == 0) {
@@ -65,8 +59,8 @@ public class GameFeatures {
         int i;
         int j;
         int[][] actualBoard = board.getBoard();
-        for (i = 0; i < actualBoard.length - 2; i++) {
-            for (j = 0; j < actualBoard.length; j++) {
+        for (j = 0; j < actualBoard.length; j++) {
+            for (i = 0; i < actualBoard.length-2; i++) {
                 if ((actualBoard[i][j] == actualBoard[i + 1][j]) && (actualBoard[i][j] == actualBoard[i + 2][j]) && (actualBoard[i][j] != 0)) {
                     win = true;
                 } else {
@@ -81,8 +75,8 @@ public class GameFeatures {
         int i;
         int j;
         int[][] actualBoard = board.getBoard();
-        for (i = 0; i < actualBoard.length; i++) {
-            for (j = 0; j < actualBoard.length - 2; j++) {
+        for (j = 0; j < actualBoard.length - 2; j++) {
+            for (i = 0; i < actualBoard.length; i++) {
                 if ((actualBoard[i][j] == actualBoard[i][j + 1]) && (actualBoard[i][j] == actualBoard[i][j + 2]) && (actualBoard[i][j] != 0)) {
                     win = true;
                 } else {
