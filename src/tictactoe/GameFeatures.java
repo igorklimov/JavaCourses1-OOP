@@ -148,15 +148,12 @@ public class GameFeatures {
         }
     }
 
-    public void startGame(int size) {
+    public void startGame(int size, Player player1, Player player2) {
         int[][] game = new int[size][size];
         List<Player> players;
-        Player comp = new ComputerPlayer();
-        Player human = new HumanPlayer();
         Board board = new Board(game, size);
-
         board.getBoard();
-        players = addPlayer(human, comp);
+        players = addPlayer(player1, player2);
         loadGame(board, players);
     }
 }
