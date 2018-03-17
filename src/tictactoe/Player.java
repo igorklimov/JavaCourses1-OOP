@@ -2,7 +2,7 @@ package tictactoe;
 
 
 public abstract class Player {
-
-    public abstract void makeStep(Board board);
+    public String mark;
+    public abstract void makeStep(Board board, int sign);
 
 }

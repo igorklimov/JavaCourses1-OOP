@@ -5,7 +5,8 @@ import java.util.List;
 
 public class GameFeatures {
     private boolean win;
-    private int steps = 1;
+    private int steps;
+    private int sign;
 
     private int getSteps() {
         return steps;
@@ -30,9 +31,44 @@ public class GameFeatures {
         return players;
     }
 
-    private int countSteps() {
-        setSteps(steps = steps + 1);
-        return getSteps();
+    private void countSteps() {
+        steps = steps + 1;
+        setSteps(steps);
+    }
+
+    private void appendSign() {
+        if ((steps % 2) == 0) {
+            sign = 2;
+        } else {
+            sign = 1;
+        }
+    }
+
+    private void loadGame(Board board, List<Player> players) {
+        setWin(false);
+        steps = 1;
+        while (!isWin()) {
+            for (int i = 0; i < 2; i++) {
+                System.out.println("Move: " + getSteps());
+                appendSign();
+                players.get(i).makeStep(board, sign);
+                countSteps();
+                board.printBoard();
+                checkWin(board);
+                if (isWin()) {
+                    break;
+                }
+            }
+        }
+    }
+
+    public void startGame(int size, Player player1, Player player2) {
+        int[][] deck = new int[size][size];
+        List<Player> players;
+        Board board = new Board(deck, size);
+        board.getBoard();
+        players = addPlayer(player1, player2);
+        loadGame(board, players);
     }
 
     private boolean checkWin(Board board) {
@@ -60,7 +96,7 @@ public class GameFeatures {
         int j;
         int[][] actualBoard = board.getBoard();
         for (j = 0; j < actualBoard.length; j++) {
-            for (i = 0; i < actualBoard.length-2; i++) {
+            for (i = 0; i < actualBoard.length - 2; i++) {
                 if ((actualBoard[i][j] == actualBoard[i + 1][j]) && (actualBoard[i][j] == actualBoard[i + 2][j]) && (actualBoard[i][j] != 0)) {
                     win = true;
                 } else {
@@ -124,30 +160,5 @@ public class GameFeatures {
             win = true;
         }
         return win;
-    }
-
-    private void loadGame(Board board, List<Player> players) {
-        setWin(false);
-        while (!isWin()) {
-            for (int i = 0; i < 2; i++) {
-                System.out.println("Move: " + getSteps());
-                countSteps();
-                players.get(i).makeStep(board);
-                board.printBoard();
-                checkWin(board);
-                if (isWin()) {
-                    break;
-                }
-            }
-        }
-    }
-
-    public void startGame(int size, Player player1, Player player2) {
-        int[][] game = new int[size][size];
-        List<Player> players;
-        Board board = new Board(game, size);
-        board.getBoard();
-        players = addPlayer(player1, player2);
-        loadGame(board, players);
     }
 }

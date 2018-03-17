@@ -12,14 +12,14 @@ public class ComputerPlayer extends Player {
     }
 
     @Override
-    public void makeStep(Board board) {
+    public void makeStep(Board board, int sign) {
         boolean loop = false;
         int[][] testBoard = board.getBoard();
         while (!loop) {
             int rand1 = getRandomNumber(board);
             int rand2 = getRandomNumber(board);
             if (testBoard[rand1][rand2] == 0) {
-                testBoard[rand1][rand2] = 2;
+                testBoard[rand1][rand2] = sign;
                 loop = true;
             } else {
                 loop = false;

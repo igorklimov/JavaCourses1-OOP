@@ -31,7 +31,7 @@ public class HumanPlayer extends Player {
 
     private int getHumanInputVertical(Board board) {
         humanInputVertical = -1;
-        while (humanInputVertical <= board.getSize() && humanInputVertical <= -1) {
+        while ((humanInputVertical <= board.getSize()) && humanInputVertical <= -1) {
             System.out.println("Please type a number from 1 to " + board.getSize() + " (it will represent vertical axis)");
             try {
                 humanInputVertical = Integer.parseInt(scan.nextLine()) - 1;
@@ -43,15 +43,14 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public void makeStep(Board board) {
-
+    public void makeStep(Board board, int sign) {
         boolean loop = false;
         int[][] testBoard = board.getBoard();
         while (!loop) {
             getHumanInputHorizontal(board);
             getHumanInputVertical(board);
             if (testBoard[humanInputHorizontal][humanInputVertical] == 0) {
-                testBoard[humanInputHorizontal][humanInputVertical] = 1;
+                testBoard[humanInputHorizontal][humanInputVertical] = sign;
                 loop = true;
             } else {
                 System.out.println("This field is taken");
