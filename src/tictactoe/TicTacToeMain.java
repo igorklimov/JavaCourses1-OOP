@@ -5,6 +5,6 @@ public class TicTacToeMain {
         Engine engine = new Engine();
         Player comp = new ComputerPlayer();
         Player human = new HumanPlayer();
-        engine.startGame(3, comp, comp);
+        engine.startGame(3, comp, human);
     }
 }

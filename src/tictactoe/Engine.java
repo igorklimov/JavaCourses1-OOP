@@ -134,9 +134,6 @@ public class Engine {
     }
 
     private boolean draw(Board board) {
-        if (getSteps() > board.getSize() * board.getSize()) {
-            return true;
-        }
-        return false;
+        return getSteps() > board.getSize() * board.getSize();
     }
 }
