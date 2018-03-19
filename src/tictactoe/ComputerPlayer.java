@@ -4,11 +4,9 @@ import java.util.Random;
 
 public class ComputerPlayer extends Player {
     private Random rand = new Random();
-    private int randomNumber;
 
     private int getRandomNumber(Board board) {
-        randomNumber = rand.nextInt(board.getSize());
-        return randomNumber;
+        return rand.nextInt(board.getSize());
     }
 
     @Override

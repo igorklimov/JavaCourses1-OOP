@@ -3,7 +3,7 @@ package tictactoe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameFeatures {
+public class Engine {
     private boolean win;
     private int steps;
     private int sign;
@@ -24,7 +24,7 @@ public class GameFeatures {
         return win;
     }
 
-    private List<Player> addPlayer(Player player1, Player player2) {
+    private List<Player> setPlayer(Player player1, Player player2) {
         List<Player> players = new ArrayList<>();
         players.add(player1);
         players.add(player2);
@@ -55,7 +55,7 @@ public class GameFeatures {
                 countSteps();
                 board.printBoard();
                 checkWin(board);
-                if (isWin()) {
+                if (win) {
                     break;
                 }
             }
@@ -63,11 +63,11 @@ public class GameFeatures {
     }
 
     public void startGame(int size, Player player1, Player player2) {
-        int[][] deck = new int[size][size];
+        int[][] gameBoard = new int[size][size];
         List<Player> players;
-        Board board = new Board(deck, size);
+        Board board = new Board(gameBoard, size);
         board.getBoard();
-        players = addPlayer(player1, player2);
+        players = setPlayer(player1, player2);
         loadGame(board, players);
     }
 
@@ -88,77 +88,61 @@ public class GameFeatures {
             setWin(true);
             System.out.println("No one won");
         }
-        return isWin();
+        return false;
+    }
+
+    private boolean checkValues(int value1, int value2, int value3) {
+        return ((value1 != 0) && (value1 == value2) && (value2 == value3));
     }
 
     private boolean getWinnerVertical(Board board) {
-        int i;
-        int j;
-        int[][] actualBoard = board.getBoard();
-        for (j = 0; j < actualBoard.length; j++) {
-            for (i = 0; i < actualBoard.length - 2; i++) {
-                if ((actualBoard[i][j] == actualBoard[i + 1][j]) && (actualBoard[i][j] == actualBoard[i + 2][j]) && (actualBoard[i][j] != 0)) {
-                    win = true;
-                } else {
-                    win = false;
+        for (int j = 0; j < board.getBoard().length; j++) {
+            for (int i = 0; i < (board.getBoard()[j].length - 2); i++) {
+                if (win = checkValues(board.getBoard()[i][j], board.getBoard()[i + 1][j], board.getBoard()[i + 2][j])) {
+                    return true;
                 }
             }
         }
-        return win;
+        return false;
     }
 
     private boolean getWinnerHorizontal(Board board) {
-        int i;
-        int j;
-        int[][] actualBoard = board.getBoard();
-        for (j = 0; j < actualBoard.length - 2; j++) {
-            for (i = 0; i < actualBoard.length; i++) {
-                if ((actualBoard[i][j] == actualBoard[i][j + 1]) && (actualBoard[i][j] == actualBoard[i][j + 2]) && (actualBoard[i][j] != 0)) {
-                    win = true;
-                } else {
-                    win = false;
+        for (int j = 0; j < board.getBoard().length - 2; j++) {
+            for (int i = 0; i < board.getBoard().length; i++) {
+                if (win = checkValues(board.getBoard()[i][j], board.getBoard()[i][j + 1], board.getBoard()[i][j + 2])) {
+                    return true;
                 }
             }
         }
-        return win;
+        return false;
     }
 
     private boolean getWinnerDiagonalLeftToRight(Board board) {
-        int i;
-        int j;
-        int[][] actualBoard = board.getBoard();
-        for (i = 0; i < (actualBoard.length - 2); i++) {
-            for (j = 0; j < (actualBoard.length - 2); j++) {
-                if ((actualBoard[i][j] == actualBoard[i + 1][j + 1]) && (actualBoard[i][j] == actualBoard[i + 2][j + 2]) && (actualBoard[i][j] != 0)) {
-                    win = true;
-                } else {
-                    win = false;
+        for (int i = 0; i < (board.getBoard().length - 2); i++) {
+            for (int j = 0; j < (board.getBoard().length - 2); j++) {
+                if (win = checkValues(board.getBoard()[i][j], board.getBoard()[i + 1][j + 1], board.getBoard()[i + 2][j + 2])) {
+                    return true;
                 }
             }
         }
-        return win;
+        return false;
     }
 
     private boolean getWinnerDiagonalRightToLeft(Board board) {
-        int i;
-        int j;
-        int[][] actualBoard = board.getBoard();
-        for (i = 2; i < actualBoard.length; i++) {
-            for (j = 0; j < actualBoard.length - 2; j++) {
-                if ((actualBoard[i][j] == actualBoard[i - 1][j + 1]) && (actualBoard[i][j] == actualBoard[i - 2][j + 2]) && (actualBoard[i][j] != 0)) {
-                    win = true;
-                } else {
-                    win = false;
+        for (int i = 2; i < board.getBoard().length; i++) {
+            for (int j = 0; j < board.getBoard().length - 2; j++) {
+                if (win = checkValues(board.getBoard()[i][j], board.getBoard()[i - 1][j + 1], board.getBoard()[i - 2][j + 2])) {
+                    return true;
                 }
             }
         }
-        return win;
+        return false;
     }
 
     private boolean noWinner(Board board) {
         if (getSteps() > board.getSize() * board.getSize()) {
-            win = true;
+            return true;
         }
-        return win;
+        return false;
     }
 }
