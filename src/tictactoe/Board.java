@@ -5,9 +5,10 @@ public class Board {
     private int[][] board;
     private int size;
 
-    public Board(int[][] board, int size) {
-        setBoard(board);
-        setSize(size);
+    public Board(int size) {
+        if (size >= 2) {
+            setSize(size);
+        }
     }
 
     private void setSize(int size) {
@@ -26,9 +27,10 @@ public class Board {
         return board;
     }
 
-//    public int[][] initializeBoard(int size) {
-//
-//    }
+    public void initializeBoard() {
+        int[][] gameBoard = new int[size][size];
+        setBoard(gameBoard);
+    }
 
     public void printBoard() {
         for (int i = 0; i < board.length; i++) {

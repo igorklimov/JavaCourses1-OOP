@@ -45,9 +45,9 @@ public class Engine {
     }
 
     public void startGame(int size, Player player1, Player player2) {
-        int[][] gameBoard = new int[size][size];
         List<Player> players;
-        Board board = new Board(gameBoard, size);
+        Board board = new Board(size);
+        board.initializeBoard();
         board.getBoard();
         players = setPlayer(player1, player2);
         loadGame(board, players);
