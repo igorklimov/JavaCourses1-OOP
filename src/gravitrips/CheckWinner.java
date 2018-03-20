@@ -1,7 +1,5 @@
 package gravitrips;
 
-import jdk.nashorn.internal.runtime.arrays.ArrayIndex;
-
 public class CheckWinner {
     private boolean win;
 

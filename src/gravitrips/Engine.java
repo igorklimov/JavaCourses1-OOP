@@ -1,8 +1,5 @@
 package gravitrips;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Engine {
     private int steps;
     private int sign;
@@ -18,7 +15,7 @@ public class Engine {
     public int getSign() {
         return sign;
     }
- 
+
     public void setSign(int sign) {
         this.sign = sign;
     }
