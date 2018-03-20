@@ -1,5 +1,7 @@
 package gravitrips;
 
+import jdk.nashorn.internal.runtime.arrays.ArrayIndex;
+
 public class CheckWinner {
     private boolean win;
 
@@ -12,7 +14,7 @@ public class CheckWinner {
     }
 
     public void checkWin(Board board, Engine engine) {
-        if (checkHorizontal(board) || checkVertical(board) || checkDiagonalRightToLeft(board) || checkDiagonalLeftToRight(board)) {
+        if (checkVertical(board) || checkHorizontal(board) || checkDiagonalRightToLeft(board) || checkDiagonalLeftToRight(board)) {
             setWin(true);
             if (engine.getSteps() % 2 == 0) {
                 System.out.println("Player 1 won");
@@ -29,18 +31,9 @@ public class CheckWinner {
         return ((value1 != 0) && (value1 == value2) && (value2 == value3) && (value3 == value4));
     }
 
-    private int difference(Board board) {
-        if (board.getHeight() >= board.getWidth()) {
-            System.out.println(board.getHeight() - board.getWidth());
-            return board.getHeight() - board.getWidth();
-        } else {
-            return board.getWidth() - board.getHeight();
-        }
-    }
-
     private boolean checkVertical(Board board) {
-        for (int j = 0; j < board.getHeight(); j++) {
-            for (int i = 0; i < (board.getWidth() - 4); i++) {
+        for (int j = 0; j < board.getWidth(); j++) {
+            for (int i = 0; i < (board.getHeight() - 3); i++) {
                 if (win = checkValues(board.getBoard()[i][j], board.getBoard()[i + 1][j], board.getBoard()[i + 2][j], board.getBoard()[i + 3][j])) {
                     return true;
                 }
@@ -50,8 +43,8 @@ public class CheckWinner {
     }
 
     private boolean checkHorizontal(Board board) {
-        for (int j = 0; j < board.getHeight() - 3; j++) {
-            for (int i = 0; i < board.getWidth(); i++) {
+        for (int i = 0; i < board.getHeight(); i++) {
+            for (int j = 0; j < board.getWidth() - 3; j++) {
                 if (win = checkValues(board.getBoard()[i][j], board.getBoard()[i][j + 1], board.getBoard()[i][j + 2], board.getBoard()[i][j + 3])) {
                     return true;
                 }
@@ -61,8 +54,8 @@ public class CheckWinner {
     }
 
     private boolean checkDiagonalLeftToRight(Board board) {
-        for (int i = 0; i < (board.getWidth() - 3); i++) {
-            for (int j = 0; j < (board.getHeight() - 3); j++) {
+        for (int i = 0; i < (board.getHeight() - 3); i++) {
+            for (int j = 0; j < (board.getWidth() - 3); j++) {
                 if (win = checkValues(board.getBoard()[i][j], board.getBoard()[i + 1][j + 1], board.getBoard()[i + 2][j + 2], board.getBoard()[i + 3][j + 3])) {
                     return true;
                 }
@@ -72,8 +65,8 @@ public class CheckWinner {
     }
 
     private boolean checkDiagonalRightToLeft(Board board) {
-        for (int i = 3; i < board.getWidth(); i++) {
-            for (int j = 0; j < board.getHeight() - 3; j++) {
+        for (int i = 3; i < board.getHeight(); i++) {
+            for (int j = 0; j < board.getWidth() - 3; j++) {
                 if (win = checkValues(board.getBoard()[i][j], board.getBoard()[i - 1][j + 1], board.getBoard()[i - 2][j + 2], board.getBoard()[i - 3][j + 3])) {
                     return true;
                 }

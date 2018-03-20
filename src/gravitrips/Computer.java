@@ -7,9 +7,7 @@ public class Computer extends Player {
 
 
     private int getRandomColumn(Board board) {
-        int x = rand.nextInt(board.getWidth())+1;
-        System.out.println("Random number is " + x);
-        return  x;
+        return rand.nextInt(board.getWidth())+1;
     }
 
     @Override
