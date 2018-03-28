@@ -8,32 +8,31 @@ public class Game {
         List<Player> players;
         Engine engine = new Engine();
         Board board = new Board(height, width);
-        CheckWinner winner = new CheckWinner();
         board.initializeBoard();
         board.getBoard();
-        players = setPlayer(player1, player2);
-        game(board, players, winner, engine);
+        players = declarePlayers(player1, player2);
+        game(board, players, engine);
     }
 
-    private void game(Board board, List<Player> players, CheckWinner winner, Engine engine) {
-        winner.setWin(false);
+    private void game(Board board, List<Player> players, Engine engine) {
+        board.setWin(false);
         engine.setSteps(1);
-        while (!winner.isWin()) {
+        while (!board.isWin()) {
             for (int i = 0; i < 2; i++) {
                 System.out.println("Move: " + engine.getSteps());
-                engine.appendSign();
+                engine.switchPlayer();
                 players.get(i).makeStep(board, engine.getSign());
-                engine.countSteps();
+                engine.step();
                 board.printBoard();
-                winner.checkWin(board, engine);
-                if (winner.isWin()) {
+                board.checkWin(engine);
+                if (board.isWin()) {
                     break;
                 }
             }
         }
     }
 
-    private List<Player> setPlayer(Player player1, Player player2) {
+    private List<Player> declarePlayers(Player player1, Player player2) {
         List<Player> players = new ArrayList<>();
         players.add(player1);
         players.add(player2);

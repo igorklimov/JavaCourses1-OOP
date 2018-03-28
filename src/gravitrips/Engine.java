@@ -16,16 +16,12 @@ public class Engine {
         return sign;
     }
 
-    public void setSign(int sign) {
-        this.sign = sign;
-    }
-
-    public void countSteps() {
+    public void step() {
         steps = steps + 1;
         setSteps(steps);
     }
 
-    public void appendSign() {
+    public void switchPlayer() {
         if ((steps % 2) == 0) {
             sign = 2;
         } else {
