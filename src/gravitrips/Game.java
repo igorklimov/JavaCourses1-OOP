@@ -12,10 +12,10 @@ public class Game {
         board.initializeBoard();
         board.getBoard();
         declarePlayers(player1, player2);
-        game(board, players, engine);
+        game(board, engine);
     }
 
-    private void game(Board board, List<Player> players, Engine engine) {
+    private void game(Board board, Engine engine) {
         board.setWin(false);
         engine.setSteps(1);
         while (!board.isWin()) {
@@ -33,9 +33,8 @@ public class Game {
         }
     }
 
-    private List<Player> declarePlayers(Player player1, Player player2) {
+    private void declarePlayers(Player player1, Player player2) {
         players.add(player1);
         players.add(player2);
-        return players;
     }
 }
