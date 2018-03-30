@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    private List<Player> players = new ArrayList<>();
+
     public void startGame(int height, int width, Player player1, Player player2) {
-        List<Player> players;
         Engine engine = new Engine();
         Board board = new Board(height, width);
         board.initializeBoard();
         board.getBoard();
-        players = declarePlayers(player1, player2);
+        declarePlayers(player1, player2);
         game(board, players, engine);
     }
 
@@ -33,7 +34,6 @@ public class Game {
     }
 
     private List<Player> declarePlayers(Player player1, Player player2) {
-        List<Player> players = new ArrayList<>();
         players.add(player1);
         players.add(player2);
         return players;
