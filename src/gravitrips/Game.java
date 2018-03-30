@@ -4,13 +4,9 @@ public class Game {
     private Player player1;
     private Player player2;
     private Player currentPlayer;
-    private int steps;
     private int sign;
 
-    private void step() {
-        steps = steps + 1;
 
-    }
 
     public void startGame(int height, int width, Player player1, Player player2) {
         Board board = new Board(height, width);
@@ -21,15 +17,11 @@ public class Game {
     }
 
     private void game(Board board) {
-        board.setEndGame(false);
-        steps = 1;
-        while (!board.isEndGame()) {
-            System.out.println("Move: " + steps);
-            switchPlayer();
+        while (!board.checkWin()) {
+            System.out.println("Move: " + board.getSteps());
+            switchPlayer(board);
             currentPlayer.makeStep(board, sign);
             board.printBoard();
-            board.checkWin(steps);
-            step();
         }
 
     }
@@ -39,8 +31,8 @@ public class Game {
         this.player2 = player2;
     }
 
-    private void switchPlayer() {
-        if ((steps % 2) == 0) {
+    private void switchPlayer(Board board) {
+        if ((board.getSteps() % 2) == 0) {
             sign = 2;
             currentPlayer = player2;
         } else {

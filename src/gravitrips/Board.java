@@ -4,7 +4,7 @@ public class Board {
     private int[][] board;
     private int height;
     private int width;
-    private boolean endGame;
+    private int steps;
 
     public Board(int height, int width) {
         setHeight(height);
@@ -43,14 +43,6 @@ public class Board {
         return board;
     }
 
-    public void setEndGame(boolean endGame) {
-        this.endGame = endGame;
-    }
-
-    public boolean isEndGame() {
-        return endGame;
-    }
-
     public void initializeBoard() {
         board = new int[height][width];
     }
@@ -63,21 +55,33 @@ public class Board {
             System.out.println();
         }
         System.out.println();
+
     }
 
+    public int getSteps() {
+        return steps;
+    }
 
-    public void checkWin(int steps) {
+    private void step() {
+        steps = steps + 1;
+
+    }
+
+    public boolean checkWin() {
+        boolean endGame = false;
         if (checkVertical() || checkHorizontal() || checkDiagonalRightToLeft() || checkDiagonalLeftToRight()) {
-            setEndGame(true);
             if (steps % 2 == 0) {
                 System.out.println("Player 2 won");
             } else {
                 System.out.println("Player 1 won");
             }
+            endGame = true;
         } else if (steps >= getHeight() * getWidth()) {
-            setEndGame(true);
+            endGame = true;
             System.out.println("Draw");
         }
+        step();
+        return endGame;
     }
 
     private boolean checkValues(int value1, int value2, int value3, int value4) {

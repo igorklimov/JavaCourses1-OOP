@@ -5,6 +5,6 @@ public class GravitripsMain {
         Game game = new Game();
         Player computer = new Computer();
         Player human = new Human();
-        game.startGame(5, 5, computer, computer);
+        game.startGame(4, 4, computer, computer);
     }
 }
