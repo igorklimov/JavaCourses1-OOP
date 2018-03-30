@@ -7,7 +7,7 @@ public class Computer extends Player {
 
 
     private int getRandomColumn(Board board) {
-        return rand.nextInt(board.getWidth())+1;
+        return rand.nextInt(board.getWidth()) + 1;
     }
 
     @Override
@@ -16,13 +16,12 @@ public class Computer extends Player {
         int[][] testBoard = board.getBoard();
         int random = getRandomColumn(board);
         while (!loop) {
-            for (int i = board.getHeight()+MIN; i >= 0; i--) {
-                if (testBoard[i][random+MIN] == 0) {
-                    testBoard[i][random+MIN] = sign;
+            for (int i = board.getHeight() + MIN; i >= 0; i--) {
+                if (testBoard[i][random + MIN] == 0) {
+                    testBoard[i][random + MIN] = sign;
                     loop = true;
                     break;
-                }
-                else if (testBoard[0][random+MIN] != 0) {
+                } else if (testBoard[0][random + MIN] != 0) {
                     random = getRandomColumn(board);
                 }
             }
